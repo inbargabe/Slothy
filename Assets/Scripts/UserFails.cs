@@ -17,7 +17,7 @@ public class UserFails : MonoBehaviour {
 	void Update () {
 
 		if (sloth.transform.position.y < -7 || sloth.transform.position.y > 10
-			|| sloth.transform.position.x < -12.76 || sloth.transform.position.x > 13) {
+			|| sloth.transform.position.x < -14 || sloth.transform.position.x > 13) {
 			print ("slothy died.");
 			SceneManager.LoadScene ("LoseLevel");
 		}

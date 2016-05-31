@@ -13,8 +13,8 @@ public class FlyBehavior : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D objectCollision) {
 
 		if (objectCollision.gameObject.tag == "Player") {
-			flySpriteRenderer.enabled = false;
 			pointsManager.flies++;
+			Destroy (gameObject);
 		}
 	}
 }
