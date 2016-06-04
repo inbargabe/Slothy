@@ -17,36 +17,15 @@ public class ButtonsControl : MonoBehaviour {
 
 	}
 
-	public void Back(){
+	public void onClickMainMenu(){
 		SceneManager.LoadScene ("Levels");
+	}
 
+	public void onClickNextLevel(int level) {
+		SceneManager.LoadScene (level + 1);
 	}
-	public void Level1(){
-		SceneManager.LoadScene ("Stage1");
 
-	}
-	public void Level2(){
-		SceneManager.LoadScene ("Stage2");
-
-	}
-	public void Level3(){
-		SceneManager.LoadScene ("Stage3");
-
-	}
-	public void Level4(){
-		SceneManager.LoadScene ("Stage4");
-
-	}
-	public void Level5(){
-		SceneManager.LoadScene ("Stage5");
-	}
-	public void Level6(){
-		SceneManager.LoadScene ("Stage6");
-	}
-	public void Level7(){
-		SceneManager.LoadScene ("Stage7");
-	}
-	public void Level8(){
-		SceneManager.LoadScene ("Stage8");
+	public void onClickRestart() {
+		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex);
 	}
 }
