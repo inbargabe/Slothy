@@ -20,7 +20,7 @@ public class ButtonsControl : MonoBehaviour {
 	}
 
 	public void onClickMainMenu(){
-		SceneManager.LoadScene ("Levels");
+		SceneManager.LoadScene (0);
 	}
 
 	public void onClickNextLevel() {
