@@ -10,6 +10,7 @@ public class SlothBehavior : MonoBehaviour {
 	public GameObject movingBranch;
 	public GameObject hugeMovingBranch;
 	public Collider2D collisionObject;
+	public GameObject deathScreen;
 
 	public Rigidbody2D slothRigidBody;
 
@@ -46,6 +47,13 @@ public class SlothBehavior : MonoBehaviour {
 		if (collisionObject != null && collisionObject.tag == "HugeMovingBranch") {
 			sloth.transform.parent = hugeMovingBranch.transform;
 		}
+
+		if (sloth.transform.position.y < -7 || sloth.transform.position.y > 10
+			|| sloth.transform.position.x < -14 || sloth.transform.position.x > 13) {
+			print ("slothy died.");
+			deathScreen.SetActive(true);
+			Time.timeScale = 0;
+		}
 	}
 
 
@@ -58,7 +66,8 @@ public class SlothBehavior : MonoBehaviour {
 
 		// User fails.
 		if (objectTag == "BranchWithThorns" || objectTag == "Enemy") {
-			SceneManager.LoadScene ("LoseLevel");
+			deathScreen.SetActive(true);
+			Time.timeScale = 0;
 		}
 
 

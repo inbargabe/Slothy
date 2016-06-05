@@ -23,8 +23,8 @@ public class ButtonsControl : MonoBehaviour {
 		SceneManager.LoadScene ("Levels");
 	}
 
-	public void onClickNextLevel(int level) {
-		SceneManager.LoadScene (level + 1);
+	public void onClickNextLevel() {
+		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
 	}
 
 	public void onClickRestartButton(){
