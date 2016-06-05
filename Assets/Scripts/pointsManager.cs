@@ -40,18 +40,4 @@ public class pointsManager : MonoBehaviour {
 		}
 	}
 
-	/*
-	public void FlyCount() {
-
-		string level = "MaxFliesOfLevel" + SceneManager.GetActiveScene ().buildIndex;
-
-		print("level" + level);
-
-		//TODO: display how many stars collected in level menu.
-		if (flies > PlayerPrefs.GetInt (level)) {
-			PlayerPrefs.SetInt (level, flies);
-		} 
-	}*/
-		
-
 }

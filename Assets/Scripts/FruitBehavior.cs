@@ -15,7 +15,6 @@ public class FruitBehavior : MonoBehaviour {
 	public BoxCollider2D branch1Collider;
 
 	public static bool finishedLevel;
-	public pointsManager m_pointsManager;
 
 
 	void Start() {
