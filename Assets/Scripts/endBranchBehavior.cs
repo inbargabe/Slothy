@@ -10,6 +10,7 @@ public class endBranchBehavior : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		sloth = GameObject.Find ("sloth");
 		branchCollider = branch1.GetComponent<BoxCollider2D> ();
 	
 	}
