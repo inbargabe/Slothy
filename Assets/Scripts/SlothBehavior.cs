@@ -25,6 +25,8 @@ public class SlothBehavior : MonoBehaviour {
 
 		// If user touched the sloth - drop the sloth from the collider it's on 
 		if (m_touchController.touchedPlayer && collisionObject != null) {
+			slothRigidBody.gravityScale = 1;
+			slothRigidBody.mass = 0.7f;
 			print ("Collider is " + collisionObject.tag);
 			collisionObject.isTrigger = true;
 			m_touchController.touchedPlayer = false;
