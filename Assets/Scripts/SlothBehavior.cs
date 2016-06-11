@@ -15,8 +15,13 @@ public class SlothBehavior : MonoBehaviour {
 	public Rigidbody2D slothRigidBody;
 
 	public bool touchedMovingBranch;
+	//Die sound
+	public AudioClip DieSound;
+	private bool Died;
+	public AudioSource DieAudio;
 
 	void Start() {
+		Died = false;
 		slothRigidBody = sloth.GetComponent<Rigidbody2D> ();
 	}
 
@@ -25,8 +30,6 @@ public class SlothBehavior : MonoBehaviour {
 
 		// If user touched the sloth - drop the sloth from the collider it's on 
 		if (m_touchController.touchedPlayer && collisionObject != null) {
-			slothRigidBody.gravityScale = 1;
-			slothRigidBody.mass = 0.7f;
 			print ("Collider is " + collisionObject.tag);
 			collisionObject.isTrigger = true;
 			m_touchController.touchedPlayer = false;
@@ -53,6 +56,10 @@ public class SlothBehavior : MonoBehaviour {
 		if (sloth.transform.position.y < -7 || sloth.transform.position.y > 10
 			|| sloth.transform.position.x < -14 || sloth.transform.position.x > 13) {
 			print ("slothy died.");
+			if (!Died) {
+				DieAudio.PlayOneShot (DieSound, 0.7F);
+				Died = true;
+			}
 			deathScreen.SetActive(true);
 			Time.timeScale = 0;
 		}
