@@ -26,40 +26,40 @@ public class ButtonsControl : MonoBehaviour {
 	}
 
 	public void onClickMainMenu(){
-		audio.PlayOneShot (clickSound, 0.7f);
 		SceneManager.LoadScene (0);
+		audio.PlayOneShot (clickSound, 0.7f);
 	}
 
 	public void onClickNextLevel() {
-		audio.PlayOneShot (clickSound, 0.7f);
 		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
+		audio.PlayOneShot (clickSound, 0.7f);
 	}
 
 	public void onClickRestartButton(){
-		audio.PlayOneShot (clickSound, 0.7f);
 		Time.timeScale = 1;
 		pauseScreen.SetActive(false);
 		endOfStageScreen.SetActive (false);
 		SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+		audio.PlayOneShot (clickSound, 0.7f);
 	}
 
 	public void onClickRestartWhenDiedButton(){
-		audio.PlayOneShot (clickSound, 0.7f);
 		Time.timeScale = 1;
 		deathScreen.SetActive(false);
 		SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+		audio.PlayOneShot (clickSound, 0.7f);
 	}
 
 	public void onClickResume() {
-		audio.PlayOneShot (clickSound, 0.7f);
 		Time.timeScale = 1;
 		pauseScreen.SetActive(false);
+		audio.PlayOneShot (clickSound, 0.7f);
 	}
 		
 	public void onClickPauseButton(){
-		audio.PlayOneShot (clickSound, 0.7f);
 		Time.timeScale = 0;
 		pauseScreen.SetActive(true);
+		audio.PlayOneShot (clickSound, 0.7f);
 	}
 
 }

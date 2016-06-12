@@ -20,7 +20,7 @@ public class SoundManager : MonoBehaviour {
 	public AudioSource audio;
 
 
-	public FlyBehavior m_flyBehavior;
+//	public FlyBehavior m_flyBehavior;
 	public SlothBehavior m_slothBehavior;
 	public TouchController m_touchController;
 	public fireball m_FireBall;
@@ -34,13 +34,13 @@ public class SoundManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (m_flyBehavior.playerTouchedFly) {
+		if (FlyBehavior.playerTouchedFly) {
 			audio.PlayOneShot (flySound, 0.7f);
-			m_flyBehavior.playerTouchedFly = false;
+			FlyBehavior.playerTouchedFly = false;
 		}
 
 		if (m_slothBehavior.slothyDied) {
-			audio.PlayOneShot (DieSound, 0.7F);
+		//	audio.PlayOneShot (DieSound, 0.7F);
 			m_slothBehavior.slothyDied = false;
 		}
 		if (m_slothBehavior.slothyJumping) {
@@ -55,9 +55,9 @@ public class SoundManager : MonoBehaviour {
 			audio.PlayOneShot (SlothyOnThorns, 0.7F);
 			m_slothBehavior.slothyOnThorns = false;
 		}
-		if (m_touchController.touchedBranch) {
+		if (m_touchController.touchedBranchSound) {
 			audio.PlayOneShot (TouchBranchSound, 0.7f);
-			//m_touchController.touchedBranch = false;
+			m_touchController.touchedBranchSound = false;
 		}
 		if (m_touchController.touchedPlayer) {
 			audio.PlayOneShot (TouchPlayerSound, 0.7f);
@@ -83,6 +83,12 @@ public class SoundManager : MonoBehaviour {
 			audio.PlayOneShot (slothyOnGaizerSound, 0.7f);
 			m_slothBehavior.slothyOnGaizer = false;
 		}
+		/*if (FruitBehavior.slothyTouchFruit) {
+			audio.PlayOneShot (FinishStageSound, 0.7f);
+			print ("im here");
+			FruitBehavior.slothyTouchFruit = false;
+		}*/
+
 		if (m_slothBehavior.slothyTouchFruit) {
 			audio.PlayOneShot (FinishStageSound, 0.7f);
 			m_slothBehavior.slothyTouchFruit = false;

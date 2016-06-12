@@ -92,9 +92,6 @@ public class SlothBehavior : MonoBehaviour {
 		if (collisionObject != null && collisionObject.tag == "Gaizer") {
 			slothyOnGaizer = true;
 		}
-		if (collisionObject != null && collisionObject.tag == "Fruit") {
-			slothyTouchFruit = true;
-		}
 		if (Mathf.Abs (transform.position.x - Snake.transform.position.x) == 3 && Mathf.Abs (transform.position.y - Snake.transform.position.y) < 3) {
 			snakeCloseToSloth = true;
 		}
@@ -129,6 +126,8 @@ public class SlothBehavior : MonoBehaviour {
 		if (objectTag == "Fruit") {
 			sloth.transform.parent = null;
 			//slothRigidBody.isKinematic = true;
+			slothyTouchFruit = true;
+			print ("kaki" + slothyTouchFruit);
 		}
 	}
 }

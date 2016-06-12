@@ -9,6 +9,7 @@ public class TouchController : MonoBehaviour {
 	public GameObject objToRotate;
 
 	public bool touchedBranch;
+	public bool touchedBranchSound; //bool for sound
 	public bool touchedPlayer;
 	public int firstArrow;
 
@@ -17,6 +18,7 @@ public class TouchController : MonoBehaviour {
 
 	void Start() {
 		touchedPlayer = false;
+		touchedBranchSound = false;
 	}
 
 	void FixedUpdate() {
@@ -41,6 +43,7 @@ public class TouchController : MonoBehaviour {
 					if (obj.tag == "Branch") {
 						firstArrow++;
 						touchedBranch = true;
+						touchedBranchSound = true;
 						objToRotate = obj;
 
 						// If sloth is on a moving branch and is being touched again.

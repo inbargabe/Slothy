@@ -16,7 +16,6 @@ public class FruitBehavior : MonoBehaviour {
 
 	public static bool finishedLevel;
 
-
 	void Start() {
 		branch1Collider = branch1.GetComponent<BoxCollider2D> ();
 		fruitSpriteRenderer = fruit.GetComponent<SpriteRenderer> ();

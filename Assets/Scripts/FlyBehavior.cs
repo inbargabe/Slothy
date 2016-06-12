@@ -4,7 +4,7 @@ using System.Collections;
 public class FlyBehavior : MonoBehaviour {
 
 	public SpriteRenderer flySpriteRenderer;
-	public bool playerTouchedFly;
+	public static bool playerTouchedFly;
 
 	// Use this for initialization
 	void Start () {
