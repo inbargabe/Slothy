@@ -20,12 +20,12 @@ public class SoundManager : MonoBehaviour {
 	public AudioSource audio;
 
 
-	FlyBehavior m_flyBehavior;
-	SlothBehavior m_slothBehavior;
-	TouchController m_touchController;
-	fireball m_FireBall;
-	ButtonsControl m_buttonsControl;
-	CanvasManager m_canvasManager;
+	public FlyBehavior m_flyBehavior;
+	public SlothBehavior m_slothBehavior;
+	public TouchController m_touchController;
+	public fireball m_FireBall;
+	public ButtonsControl m_buttonsControl;
+	public CanvasManager m_canvasManager;
 	// Use this for initialization
 	void Start () {
 		audio = GetComponent<AudioSource>();
