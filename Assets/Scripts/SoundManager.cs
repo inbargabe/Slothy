@@ -24,6 +24,8 @@ public class SoundManager : MonoBehaviour {
 	SlothBehavior m_slothBehavior;
 	TouchController m_touchController;
 	fireball m_FireBall;
+	ButtonsControl m_buttonsControl;
+	CanvasManager m_canvasManager;
 	// Use this for initialization
 	void Start () {
 		audio = GetComponent<AudioSource>();

@@ -11,10 +11,16 @@ public class CanvasManager : MonoBehaviour {
 	public GameObject loadingImage;
 	public GameObject credits;
 
+	//Sound
+	public AudioClip clickSound;
+	public AudioSource audio;
+
 
 	public int numOfLevels; 
 
+
 	void Start () {
+		audio = GetComponent<AudioSource>();
 		//audioSource = GetComponent<AudioSource>();
 		// set scroll for showing level at start of every level.
 		//PlayerPrefs.SetInt("Show_Level", 1); 
@@ -28,6 +34,8 @@ public class CanvasManager : MonoBehaviour {
 		SetLevels();
 		FlyCount();
 		//SetSoundOnOff();
+
+	
 
 	}
 
@@ -70,12 +78,14 @@ public class CanvasManager : MonoBehaviour {
 	}
 
 	public void onClickBeginButton() {
+		audio.PlayOneShot (clickSound, 0.7f);
 		mainMenu.SetActive(false);
 		levelMenu.SetActive(true);
 	}
 
 
 	public void onClickLevelButton(int level) {
+		audio.PlayOneShot (clickSound, 0.7f);
 		loadingImage.SetActive(true);
 		levelMenu.SetActive (false);
 		SceneManager.LoadSceneAsync(level, LoadSceneMode.Single);
@@ -84,6 +94,7 @@ public class CanvasManager : MonoBehaviour {
 		
 
 	public void onClickBackButton (string button) {
+		audio.PlayOneShot (clickSound, 0.7f);
 		switch(button) {
 		case "LevelMenu":
 			mainMenu.SetActive(true);
@@ -102,11 +113,13 @@ public class CanvasManager : MonoBehaviour {
 	}
 
 	public void onClickSettingsButton () {
+		audio.PlayOneShot (clickSound, 0.7f);
 		settings.SetActive(true);
 		mainMenu.SetActive(false);
 	}
 
 	public void onClickResetButton (){
+		audio.PlayOneShot (clickSound, 0.7f);
 		PlayerPrefs.DeleteAll();
 		PlayerPrefs.SetInt("Show_Level", 1);
 		SetLevels();
@@ -115,6 +128,7 @@ public class CanvasManager : MonoBehaviour {
 	}
 
 	public void onClickCreditsButton () {
+		audio.PlayOneShot (clickSound, 0.7f);
 		credits.SetActive(true);
 		mainMenu.SetActive(false);
 	}
