@@ -15,13 +15,32 @@ public class SlothBehavior : MonoBehaviour {
 	public Rigidbody2D slothRigidBody;
 
 	public bool touchedMovingBranch;
-	//Die sound
-	public AudioClip DieSound;
-	private bool Died;
-	public AudioSource DieAudio;
+	public GameObject Snake;
+	public GameObject Herpina;
+	public GameObject Nest;
+	//Die sound bool
+	public bool slothyDied;
+	public bool slothyJumping;
+	public bool slothyOnSlipery;
+	public bool slothyOnGaizer;
+	public bool slothyOnThorns;
+	public bool snakeCloseToSloth;
+	public bool herpinaCloseToSloth;
+	public bool nestCloseToSloth;
+	public bool slothyTouchFruit;
 
 	void Start() {
-		Died = false;
+		slothyDied = false;
+		slothyJumping = false;
+		slothyOnSlipery = false;
+		slothyOnThorns = false;
+		snakeCloseToSloth = false;
+		herpinaCloseToSloth = false;
+		nestCloseToSloth = false;
+		slothyOnGaizer = false;
+		slothyTouchFruit = false;
+
+
 		slothRigidBody = sloth.GetComponent<Rigidbody2D> ();
 	}
 
@@ -56,12 +75,34 @@ public class SlothBehavior : MonoBehaviour {
 		if (sloth.transform.position.y < -7 || sloth.transform.position.y > 10
 			|| sloth.transform.position.x < -14 || sloth.transform.position.x > 13) {
 			print ("slothy died.");
-			if (!Died) {
-				DieAudio.PlayOneShot (DieSound, 0.7F);
-				Died = true;
-			}
 			deathScreen.SetActive(true);
 			Time.timeScale = 0;
+			slothyDied = true;
+		}
+
+		if (collisionObject != null && collisionObject.tag == "jumpingBranch") {
+			slothyJumping = true;
+		}
+		if (collisionObject != null && collisionObject.tag == "sliperyBranch") {
+			slothyOnSlipery = true;
+		}
+		if (collisionObject != null && collisionObject.tag == "BranchWithThorns") {
+			slothyOnThorns = true;
+		}
+		if (collisionObject != null && collisionObject.tag == "Gaizer") {
+			slothyOnGaizer = true;
+		}
+		if (collisionObject != null && collisionObject.tag == "Fruit") {
+			slothyTouchFruit = true;
+		}
+		if (Mathf.Abs (transform.position.x - Snake.transform.position.x) == 3 && Mathf.Abs (transform.position.y - Snake.transform.position.y) < 3) {
+			snakeCloseToSloth = true;
+		}
+		if (Mathf.Abs (transform.position.x - Herpina.transform.position.x) == 1 && Mathf.Abs (transform.position.y - Herpina.transform.position.y) < 3) {
+			herpinaCloseToSloth = true;
+		}
+		if (Mathf.Abs (transform.position.x - Nest.transform.position.x) == 1 && Mathf.Abs (transform.position.y - Nest.transform.position.y) < 3) {
+			nestCloseToSloth = true;
 		}
 	}
 

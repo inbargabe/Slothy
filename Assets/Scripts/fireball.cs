@@ -8,17 +8,21 @@ public class fireball : MonoBehaviour {
 	public float spawnTime = 5f;
 	public bool isGoingRight;
 
+	public bool spawn;
+
 
 	// Use this for initialization
 	void Start () {
 		//Move (isGoingRight);
 		InvokeRepeating ("SpawnBall", spawnTime, spawnTime);
+		spawn = false;
 
 	}
 		    
 	void SpawnBall()
 	{
 		var newBall = GameObject.Instantiate(ball);
+		spawn = true;
 	}
 
 	/**void Move(bool isGoingRight)
