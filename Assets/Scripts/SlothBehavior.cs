@@ -18,7 +18,8 @@ public class SlothBehavior : MonoBehaviour {
 	public GameObject Snake;
 	public GameObject Herpina;
 	public GameObject Nest;
-	//Die sound bool
+
+	// sound booleans
 	public bool slothyDied;
 	public bool slothyJumping;
 	public bool slothyOnSlipery;
@@ -40,6 +41,9 @@ public class SlothBehavior : MonoBehaviour {
 		slothyOnGaizer = false;
 		slothyTouchFruit = false;
 
+		Snake = null;
+		Herpina = null;
+		Nest = null;
 
 		slothRigidBody = sloth.GetComponent<Rigidbody2D> ();
 	}
@@ -92,13 +96,13 @@ public class SlothBehavior : MonoBehaviour {
 		if (collisionObject != null && collisionObject.tag == "Gaizer") {
 			slothyOnGaizer = true;
 		}
-		if (Mathf.Abs (transform.position.x - Snake.transform.position.x) == 3 && Mathf.Abs (transform.position.y - Snake.transform.position.y) < 3) {
+		if (Snake != null && (Mathf.Abs (transform.position.x - Snake.transform.position.x) == 3 && Mathf.Abs (transform.position.y - Snake.transform.position.y) < 3)) {
 			snakeCloseToSloth = true;
 		}
-		if (Mathf.Abs (transform.position.x - Herpina.transform.position.x) == 1 && Mathf.Abs (transform.position.y - Herpina.transform.position.y) < 3) {
+		if (Herpina != null && (Mathf.Abs (transform.position.x - Herpina.transform.position.x) == 1 && Mathf.Abs (transform.position.y - Herpina.transform.position.y) < 3)) {
 			herpinaCloseToSloth = true;
 		}
-		if (Mathf.Abs (transform.position.x - Nest.transform.position.x) == 1 && Mathf.Abs (transform.position.y - Nest.transform.position.y) < 3) {
+		if (Nest != null && (Mathf.Abs (transform.position.x - Nest.transform.position.x) == 1 && Mathf.Abs (transform.position.y - Nest.transform.position.y) < 3)) {
 			nestCloseToSloth = true;
 		}
 	}
