@@ -75,7 +75,7 @@ public class SoundManager : MonoBehaviour {
 			audio.PlayOneShot (nestSound, 0.7f);
 			m_slothBehavior.nestCloseToSloth = false;
 		}
-		if (m_FireBall.spawn) {
+		if (m_FireBall != null && m_FireBall.spawn) {
 			audio.PlayOneShot (spawnFireBallSound, 0.7f);
 			m_FireBall.spawn = false;
 		}
