@@ -42,7 +42,7 @@ public class CanvasManager : MonoBehaviour {
 
 	public void FlyCount() {
 		for (int i = 0; i < numOfLevels; i++) {
-			Transform Flies = levelMenu.transform.GetChild (i + 1).GetChild (1).GetChild (1);
+			Transform Flies = levelMenu.transform.GetChild (i + 1).GetChild (0).GetChild (1);
 			FillStars (Flies.GetComponent<Image>(), i + 1);
 		}
 	}
