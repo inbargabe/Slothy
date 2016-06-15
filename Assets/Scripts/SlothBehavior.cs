@@ -30,6 +30,8 @@ public class SlothBehavior : MonoBehaviour {
 	public bool nestCloseToSloth;
 	public bool slothyTouchFruit;
 
+	public Animator animator;
+
 	void Start() {
 		slothyDied = false;
 		slothyJumping = false;
@@ -46,6 +48,7 @@ public class SlothBehavior : MonoBehaviour {
 		Nest = null;
 
 		slothRigidBody = sloth.GetComponent<Rigidbody2D> ();
+
 	}
 
 	// Update is called once per frame
@@ -95,6 +98,9 @@ public class SlothBehavior : MonoBehaviour {
 		}
 		if (collisionObject != null && collisionObject.tag == "Gaizer") {
 			slothyOnGaizer = true;
+		}
+		if (collisionObject != null && collisionObject.tag == "JumpingBranch") {
+			animator.SetTrigger ("isBouncing");
 		}
 		if (Snake != null && (Mathf.Abs (transform.position.x - Snake.transform.position.x) == 3 && Mathf.Abs (transform.position.y - Snake.transform.position.y) < 3)) {
 			snakeCloseToSloth = true;

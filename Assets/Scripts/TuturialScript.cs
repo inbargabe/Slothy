@@ -11,6 +11,13 @@ public class TuturialScript : MonoBehaviour {
 	public GameObject meetEnemies;
 	public GameObject meetFlies;
 
+	public bool isFirstTime;
+	void Update(){
+		if (isFirstTime) {
+			tuturial.SetActive (true);
+		}
+
+	}
 	public void onClickNextMeetSloth() {
 		meetSloth.SetActive (false);
 		meetFruit.SetActive (true);
