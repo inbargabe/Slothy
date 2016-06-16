@@ -29,8 +29,19 @@ public class SlothBehavior : MonoBehaviour {
 	public bool herpinaCloseToSloth;
 	public bool nestCloseToSloth;
 	public bool slothyTouchFruit;
-
+	//jumping branch animator
 	public Animator animator;
+
+
+	//sound - dead
+	public AudioClip DieSound;
+	public AudioSource audio;
+	private bool isDeadSoundPlayed;
+
+
+	//android hype
+	public PlayerLifeController m_PlayerLifeController;
+
 
 	void Start() {
 		slothyDied = false;
@@ -42,6 +53,7 @@ public class SlothBehavior : MonoBehaviour {
 		nestCloseToSloth = false;
 		slothyOnGaizer = false;
 		slothyTouchFruit = false;
+		isDeadSoundPlayed = false;
 
 		Snake = null;
 		Herpina = null;
@@ -53,7 +65,11 @@ public class SlothBehavior : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
+		if (deathScreen.activeSelf && !isDeadSoundPlayed) {
+			m_PlayerLifeController.PlayerDied();
+			isDeadSoundPlayed = true;
+			audio.PlayOneShot (DieSound, 0.7F);
+		}
 		// If user touched the sloth - drop the sloth from the collider it's on 
 		if (m_touchController.touchedPlayer && collisionObject != null) {
 			print ("Collider is " + collisionObject.tag);
@@ -61,9 +77,6 @@ public class SlothBehavior : MonoBehaviour {
 			m_touchController.touchedPlayer = false;
 		}
 
-		if (m_touchController.touchedPlayer) {
-			slothRigidBody.gravityScale = 5;
-		}
 			
 		// Sloth landed on moving branch and starts moving with it 
 		if (collisionObject != null && collisionObject.tag == "MovingBranch") {
@@ -90,7 +103,7 @@ public class SlothBehavior : MonoBehaviour {
 			slothyDied = true;
 		}
 
-		if (collisionObject != null && collisionObject.tag == "jumpingBranch") {
+		if (collisionObject != null && collisionObject.tag == "JumpingBranch" && !slothyJumping) {
 			slothyJumping = true;
 		}
 		if (collisionObject != null && collisionObject.tag == "sliperyBranch") {
@@ -102,9 +115,7 @@ public class SlothBehavior : MonoBehaviour {
 		if (collisionObject != null && collisionObject.tag == "Gaizer") {
 			slothyOnGaizer = true;
 		}
-		if (collisionObject != null && collisionObject.tag == "JumpingBranch") {
-			animator.SetTrigger ("isBouncing");
-		}
+
 		if (Snake != null && (Mathf.Abs (transform.position.x - Snake.transform.position.x) == 3 && Mathf.Abs (transform.position.y - Snake.transform.position.y) < 3)) {
 			snakeCloseToSloth = true;
 		}
@@ -138,7 +149,13 @@ public class SlothBehavior : MonoBehaviour {
 
 		if (objectTag == "Fruit") {
 			sloth.transform.parent = null;
+			//slothRigidBody.isKinematic = true;
 			slothyTouchFruit = true;
+			print ("kaki" + slothyTouchFruit);
+		}
+		if (objectTag == "JumpingBranch") {
+			animator = collisionObject.GetComponent <Animator> ();
+			animator.SetTrigger ("isBouncing");
 		}
 	}
 }
