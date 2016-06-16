@@ -39,39 +39,39 @@ public class SoundManager : MonoBehaviour {
 			FlyBehavior.playerTouchedFly = false;
 		}
 
-		if (m_slothBehavior.slothyDied) {
-		//	audio.PlayOneShot (DieSound, 0.7F);
+		if (m_slothBehavior != null && m_slothBehavior.slothyDied) {
+			//audio.PlayOneShot (DieSound, 0.7F);
 			m_slothBehavior.slothyDied = false;
 		}
-		if (m_slothBehavior.slothyJumping) {
+		if (m_slothBehavior != null && m_slothBehavior.slothyJumping && !audio.isPlaying) {
 			audio.PlayOneShot (JumpingBranchSound, 0.7F);
 			m_slothBehavior.slothyJumping = false;
 		}
-		if (m_slothBehavior.slothyOnSlipery) {
+		if (m_slothBehavior != null && m_slothBehavior.slothyOnSlipery) {
 			audio.PlayOneShot (slothyOnSlipery, 0.7F);
 			m_slothBehavior.slothyOnSlipery = false;
 		}
-		if (m_slothBehavior.slothyOnThorns) {
+		if (m_slothBehavior != null && m_slothBehavior.slothyOnThorns) {
 			audio.PlayOneShot (SlothyOnThorns, 0.7F);
 			m_slothBehavior.slothyOnThorns = false;
 		}
-		if (m_touchController.touchedBranchSound) {
+		if (m_touchController != null && m_touchController.touchedBranchSound) {
 			audio.PlayOneShot (TouchBranchSound, 0.7f);
 			m_touchController.touchedBranchSound = false;
 		}
-		if (m_touchController.touchedPlayer) {
+		if (m_touchController != null && m_touchController.touchedPlayer) {
 			audio.PlayOneShot (TouchPlayerSound, 0.7f);
 			//m_touchController.touchedPlayer = false;
 		}
-		if (m_slothBehavior.snakeCloseToSloth) {
+		if (m_slothBehavior != null && m_slothBehavior.snakeCloseToSloth) {
 			audio.PlayOneShot (SnakeSound, 0.7f);
 			m_slothBehavior.snakeCloseToSloth = false;
 		}
-		if (m_slothBehavior.herpinaCloseToSloth) {
+		if (m_slothBehavior != null && m_slothBehavior.herpinaCloseToSloth) {
 			audio.PlayOneShot (herpinaSound, 0.7f);
 			m_slothBehavior.herpinaCloseToSloth = false;
 		}
-		if (m_slothBehavior.nestCloseToSloth) {
+		if (m_slothBehavior != null && m_slothBehavior.nestCloseToSloth) {
 			audio.PlayOneShot (nestSound, 0.7f);
 			m_slothBehavior.nestCloseToSloth = false;
 		}
@@ -79,7 +79,7 @@ public class SoundManager : MonoBehaviour {
 			audio.PlayOneShot (spawnFireBallSound, 0.7f);
 			m_FireBall.spawn = false;
 		}
-		if (m_slothBehavior.slothyOnGaizer) {
+		if (m_slothBehavior != null && m_slothBehavior.slothyOnGaizer) {
 			audio.PlayOneShot (slothyOnGaizerSound, 0.7f);
 			m_slothBehavior.slothyOnGaizer = false;
 		}
@@ -89,7 +89,7 @@ public class SoundManager : MonoBehaviour {
 			FruitBehavior.slothyTouchFruit = false;
 		}*/
 
-		if (m_slothBehavior.slothyTouchFruit) {
+		if (m_slothBehavior != null && m_slothBehavior.slothyTouchFruit) {
 			audio.PlayOneShot (FinishStageSound, 0.7f);
 			m_slothBehavior.slothyTouchFruit = false;
 		}
