@@ -8,6 +8,7 @@ public class TuturialScript : MonoBehaviour {
 	public GameObject meetSloth;
 	public GameObject meetFruit;
 	public GameObject meetBranches;
+	public GameObject meetAbilities;
 	public GameObject meetEnemies;
 	public GameObject meetFlies;
 
@@ -25,12 +26,17 @@ public class TuturialScript : MonoBehaviour {
 
 	public void onClickNextMeetFruit() {
 		meetFruit.SetActive(false);
-		meetBranches.SetActive (true);
+		meetBranches.SetActive(true);
 	}
 
 	public void onClickNextMeetBranches() {
 		meetBranches.SetActive(false);
-		meetEnemies.SetActive(true);
+		meetAbilities.SetActive(true);
+	}
+
+	public void onClickNextMeetAbilities() {
+		meetAbilities.SetActive (false);
+		meetEnemies.SetActive (true);
 	}
 
 	public void onClickNextMeetEnemies() {
@@ -40,6 +46,10 @@ public class TuturialScript : MonoBehaviour {
 
 	public void onClickNextMeetFlies() {
 		meetFlies.SetActive(false);
+		tuturial.SetActive(false);
+	}
+
+	public void onClickSkipTuturial() {
 		tuturial.SetActive(false);
 	}
 }
