@@ -61,6 +61,9 @@ public class SlothBehavior : MonoBehaviour {
 			m_touchController.touchedPlayer = false;
 		}
 
+		if (m_touchController.touchedPlayer) {
+			slothRigidBody.gravityScale = 5;
+		}
 			
 		// Sloth landed on moving branch and starts moving with it 
 		if (collisionObject != null && collisionObject.tag == "MovingBranch") {
@@ -135,9 +138,7 @@ public class SlothBehavior : MonoBehaviour {
 
 		if (objectTag == "Fruit") {
 			sloth.transform.parent = null;
-			//slothRigidBody.isKinematic = true;
 			slothyTouchFruit = true;
-			print ("kaki" + slothyTouchFruit);
 		}
 	}
 }
