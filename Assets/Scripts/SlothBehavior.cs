@@ -79,7 +79,7 @@ public class SlothBehavior : MonoBehaviour {
 			sloth.transform.parent = hugeMovingBranch.transform;
 		}
 
-		if (sloth.transform.position.y < -7 || sloth.transform.position.y > 10
+		if (!FruitBehavior.finishedLevel && sloth.transform.position.y < -7 || sloth.transform.position.y > 10
 			|| sloth.transform.position.x < -14 || sloth.transform.position.x > 13) {
 			print ("slothy died.");
 			deathScreen.SetActive(true);

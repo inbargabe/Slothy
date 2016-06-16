@@ -10,7 +10,6 @@ public class FruitBehavior : MonoBehaviour {
 	public GameObject fruit;
 	public SpriteRenderer fruitSpriteRenderer;
 	public CircleCollider2D fruitCollider;
-
 	public GameObject branch1;
 	public BoxCollider2D branch1Collider;
 
