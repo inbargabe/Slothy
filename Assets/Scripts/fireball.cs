@@ -21,8 +21,10 @@ public class fireball : MonoBehaviour {
 		    
 	void SpawnBall()
 	{
-		var newBall = GameObject.Instantiate(ball);
-		spawn = true;
+		if (ball != null) {
+			var newBall = GameObject.Instantiate (ball);
+			spawn = true;
+		}
 	}
 
 	/**void Move(bool isGoingRight)

@@ -36,6 +36,7 @@ public class SlothBehavior : MonoBehaviour {
 	//sound - dead
 	public AudioClip DieSound;
 	public AudioSource audio;
+	public AudioSource audioJumping; //Jumping branch audio source ( drag the sound manager audio)
 	private bool isDeadSoundPlayed;
 
 
@@ -103,7 +104,7 @@ public class SlothBehavior : MonoBehaviour {
 			slothyDied = true;
 		}
 
-		if (collisionObject != null && collisionObject.tag == "JumpingBranch" && !slothyJumping) {
+		if (collisionObject != null && collisionObject.tag == "JumpingBranch" && !slothyJumping  && !audio.isPlaying) {
 			slothyJumping = true;
 		}
 		if (collisionObject != null && collisionObject.tag == "sliperyBranch") {
