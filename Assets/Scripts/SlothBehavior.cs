@@ -97,7 +97,7 @@ public class SlothBehavior : MonoBehaviour {
 
 		if (!FruitBehavior.finishedLevel && sloth.transform.position.y < -7 || sloth.transform.position.y > 10
 			|| sloth.transform.position.x < -14 || sloth.transform.position.x > 13) {
-			print ("slothy died.");
+			//print ("slothy died.");
 			deathScreen.SetActive(true);
 			Time.timeScale = 0;
 			slothyDied = true;
