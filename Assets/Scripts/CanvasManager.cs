@@ -33,10 +33,7 @@ public class CanvasManager : MonoBehaviour {
 		}
 		SetLevels();
 		FlyCount();
-		//SetSoundOnOff();
-
-	
-
+		setSoundsOnOff();
 	}
 
 
@@ -124,12 +121,40 @@ public class CanvasManager : MonoBehaviour {
 		PlayerPrefs.SetInt("Show_Level", 1);
 		SetLevels();
 		FlyCount();
-		//SetSoundOnOff();
+		setSoundsOnOff();
 	}
 
 	public void onClickCreditsButton () {
 		audio.PlayOneShot (clickSound, 0.7f);
 		credits.SetActive(true);
 		mainMenu.SetActive(false);
+	}
+
+	public void onClickSoundsON() {
+		PlayerPrefs.SetInt ("MuteSounds", 0);
+		setSoundsOnOff ();
+	}
+
+	public void onClickSoundsOFF() {
+		PlayerPrefs.SetInt ("MuteSounds", 1);
+		setSoundsOnOff ();
+	}
+
+	public void onClickMusicON() {
+		PlayerPrefs.SetInt ("MuteMusic", 0);
+		setSoundsOnOff ();
+	}
+
+	public void onClickMusicOFF() {
+		PlayerPrefs.SetInt ("MuteMusic", 1);
+		setSoundsOnOff ();
+	}
+
+	public void setSoundsOnOff() {
+		if (PlayerPrefs.GetInt ("MuteMusic") == 0) {
+			audio.Play ();
+		} else {
+			audio.Stop ();
+		}
 	}
 }
