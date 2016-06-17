@@ -4,7 +4,7 @@ using System;
 
 public class PlayerLifeController : MonoBehaviour {
 
-	GameObject flubber;
+	public GameObject NoMoreLivesScreen;
 
 
 
@@ -20,8 +20,7 @@ public class PlayerLifeController : MonoBehaviour {
 
 
 	void Start () {
-		// For testing.
-		//flubber = GameObject.Find("Flubber");
+
 
 
 		if (Application.platform != RuntimePlatform.Android) {
@@ -36,6 +35,8 @@ public class PlayerLifeController : MonoBehaviour {
 		} catch (Exception e) {
 
 		}
+
+
 
 		// do only when first entering the game.
 		if (PlayerPrefs.GetInt("FirstStart") == 0) {
@@ -53,19 +54,19 @@ public class PlayerLifeController : MonoBehaviour {
 				CheckIfPlayerGetLife(false);	
 			}
 
-			
+
 		}
 
-		/*
-		if (PlayerPrefs.GetInt("Remaining Player Life") == 0) {
-			 Stop game.
-			flubber.SetActive(false);
 
+		if (PlayerPrefs.GetInt("Remaining Player Life") <= 0 && NoMoreLivesScreen != null) {
+			PlayerPrefs.SetInt("Remaining Player Life", 0);
+			NoMoreLivesScreen.SetActive(true);
+			Time.timeScale = 0;
 		} else {
-			flubber.SetActive(true);
-		}*/
+			NoMoreLivesScreen.SetActive(false);
+		}
 
-	
+
 
 
 	}
@@ -89,8 +90,8 @@ public class PlayerLifeController : MonoBehaviour {
 				hasNotChangedIn = false;
 
 				if (GetRemainingLife() < maxPlayerLife) {
-					
-					
+
+
 					PlayerPrefs.SetInt("Remaining Player Life", GetRemainingLife() + 1);
 
 					long temp = 0;
@@ -112,7 +113,7 @@ public class PlayerLifeController : MonoBehaviour {
 
 		CheckIfPlayerGetLife(hasNotChangedIn);
 	}
-	
+
 	private long GetLastTimeUserDied() {
 		return System.Convert.ToInt64(PlayerPrefs.GetString("Last Time User Lost Life"));
 	}
@@ -133,7 +134,7 @@ public class PlayerLifeController : MonoBehaviour {
 		}
 
 		if (PlayerPrefs.GetInt("Remaining Player Life") == maxPlayerLife) {
-			
+
 			PlayerPrefs.SetString("Last Time User Lost Life", "" + systemClock.CallStatic<long>("elapsedRealtime"));
 
 		} 

@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 
 public class NextLifeTime : MonoBehaviour {
-	//public Text text;
 	//public Text test_TimeNow;
 	//public Text test_lastTimeDied;
 
@@ -41,7 +40,7 @@ public class NextLifeTime : MonoBehaviour {
 
 		}
 
-		if (GetRemainingLife() == m_playerLifeController.maxPlayerLife) {
+		if (GetRemainingLife() >= m_playerLifeController.maxPlayerLife) {
 			timeText.text = "infinity";
 			needToShowTime = false;
 
@@ -49,12 +48,16 @@ public class NextLifeTime : MonoBehaviour {
 	}
 
 	void Update () {
+		if (Application.platform != RuntimePlatform.Android) {
+			return;
+		}
 		if (needToShowTime) {
 			m_playerLifeController.CheckIfPlayerGetLife(false);
 			life.text = "" + GetRemainingLife();
 
 			if (GetRemainingLife() >= m_playerLifeController.maxPlayerLife) {
 				timeText.text = "infinity";
+				PlayerPrefs.SetString("Last Time User Lost Life", null);
 				needToShowTime = false;
 				return;
 			} 
@@ -84,8 +87,12 @@ public class NextLifeTime : MonoBehaviour {
 
 
 
+		} else if (GetRemainingLife() >= m_playerLifeController.maxPlayerLife) {
+			timeText.text = "infinity";
+			PlayerPrefs.SetString("Last Time User Lost Life", null);
+			needToShowTime = false;
+			return;
 		}
-
 
 	}
 
