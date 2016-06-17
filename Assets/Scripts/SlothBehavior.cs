@@ -99,7 +99,7 @@ public class SlothBehavior : MonoBehaviour {
 			|| sloth.transform.position.x < -14 || sloth.transform.position.x > 13) {
 			//print ("slothy died.");
 			deathScreen.SetActive(true);
-			Time.timeScale = 0;
+			//Time.timeScale = 0;
 			slothyDied = true;
 		}
 
@@ -149,7 +149,7 @@ public class SlothBehavior : MonoBehaviour {
 
 		if (objectTag == "Fruit") {
 			sloth.transform.parent = null;
-			//slothRigidBody.isKinematic = true;
+			slothRigidBody.isKinematic = true;
 			slothyTouchFruit = true;
 			print ("kaki" + slothyTouchFruit);
 		}
