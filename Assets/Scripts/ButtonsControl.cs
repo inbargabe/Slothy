@@ -7,6 +7,7 @@ public class ButtonsControl : MonoBehaviour {
 	public GameObject pauseScreen;
 	public GameObject endOfStageScreen;
 	public GameObject deathScreen; 
+	public GameObject loadingImage;
 
 	//Sound
 	public AudioClip clickSound;
@@ -26,12 +27,14 @@ public class ButtonsControl : MonoBehaviour {
 	}
 
 	public void onClickMainMenu(){
-		SceneManager.LoadScene (0);
+		loadingImage.SetActive(true);
+		SceneManager.LoadSceneAsync (0, LoadSceneMode.Single);
 		audio.PlayOneShot (clickSound, 0.7f);
 	}
 
 	public void onClickNextLevel() {
-		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
+		loadingImage.SetActive(true);
+		SceneManager.LoadSceneAsync (SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
 		audio.PlayOneShot (clickSound, 0.7f);
 	}
 
@@ -39,6 +42,7 @@ public class ButtonsControl : MonoBehaviour {
 		Time.timeScale = 1;
 		pauseScreen.SetActive(false);
 		endOfStageScreen.SetActive (false);
+		loadingImage.SetActive(true);
 		SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
 		audio.PlayOneShot (clickSound, 0.7f);
 	}
@@ -46,6 +50,7 @@ public class ButtonsControl : MonoBehaviour {
 	public void onClickRestartWhenDiedButton(){
 		Time.timeScale = 1;
 		deathScreen.SetActive(false);
+		loadingImage.SetActive(true);
 		SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
 		audio.PlayOneShot (clickSound, 0.7f);
 	}

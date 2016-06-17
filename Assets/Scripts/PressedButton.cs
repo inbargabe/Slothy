@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class PressedButton : MonoBehaviour {
-	
+	/*
 	public GameObject onButton; 
 	public Sprite onPressedButtonImage;
 	public Sprite onNotPressedbuttonImage;
@@ -13,6 +13,22 @@ public class PressedButton : MonoBehaviour {
 	public Sprite offPressedButtonImage;
 	public Sprite offNotPressedbuttonImage; 
 	Image offButtonImage;
+	*/
+
+	public Image onSound; 
+	public Image offSound;
+	public Sprite onPressedSoundSprite;
+	public Sprite onNotPressedSoundSprite;
+	public Sprite offPressedSoundSprite;
+	public Sprite offNotPressedSoundSprite;
+
+	public Image onMusic; 
+	public Image offMusic;
+	public Sprite onPressedMusicSprite;
+	public Sprite onNotPressedMusicSprite;
+	public Sprite offPressedMusicSprite;
+	public Sprite offNotPressedMusicSprite;
+
 
 
 	public bool clicked;
@@ -20,33 +36,51 @@ public class PressedButton : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		clicked = false; 
-		onButtonImage = onButton.GetComponent<Image> ();
-		offButtonImage = offButton.GetComponent<Image> ();
-
+		//onButtonImage = onButton.GetComponent<Image> ();
+		//offButtonImage = offButton.GetComponent<Image> ();
+		SetSoundButtons ();
 	}
 	
 	// Update is called once per frame
 	public void OnClickMusicButton () {
 		if (PlayerPrefs.GetInt("MuteMusic") == 0) {
-			onButtonImage.sprite = onPressedButtonImage;
-			offButtonImage.sprite = offNotPressedbuttonImage;
+			onMusic.sprite = onPressedMusicSprite;
+			offMusic.sprite = offNotPressedMusicSprite;
 			//clicked = false;
 		} else {
-			onButtonImage.sprite = onNotPressedbuttonImage;
-			offButtonImage.sprite = offPressedButtonImage;
+			onMusic.sprite = onNotPressedMusicSprite;
+			offMusic.sprite = offPressedMusicSprite;
 			//clicked = true; 
 		}
 	}
 
 	public void OnClickSoundButton () {
 		if (PlayerPrefs.GetInt("MuteSounds") == 0) {
-			onButtonImage.sprite = onPressedButtonImage;
-			offButtonImage.sprite = offNotPressedbuttonImage;
+			onSound.sprite = onPressedSoundSprite;
+			offSound.sprite = offNotPressedSoundSprite;
 			//clicked = false;
 		} else {
-			onButtonImage.sprite = onNotPressedbuttonImage;
-			offButtonImage.sprite = offPressedButtonImage;
+			onSound.sprite = onNotPressedSoundSprite;
+			offSound.sprite = offPressedMusicSprite;
 			//clicked = true; 
+		}
+	}
+
+	public void SetSoundButtons(){
+		if (PlayerPrefs.GetInt ("MuteSounds") == 0) {
+			onSound.sprite = onPressedSoundSprite;
+			offSound.sprite = offNotPressedSoundSprite;
+		} else {
+			onSound.sprite = onNotPressedSoundSprite;
+			offSound.sprite = offPressedMusicSprite;
+		}
+
+		if (PlayerPrefs.GetInt ("MuteMusic") == 0) {
+			onMusic.sprite = onPressedMusicSprite;
+			offMusic.sprite = offNotPressedMusicSprite;
+		} else {
+			onMusic.sprite = onNotPressedMusicSprite;
+			offMusic.sprite = offPressedMusicSprite;
 		}
 	}
 }
