@@ -8,6 +8,7 @@ public class AdsManager : MonoBehaviour
 		if (Advertisement.IsReady())
 		{
 			Advertisement.Show();
+			PlayerPrefs.SetInt("Remaining Player Life", PlayerPrefs.GetInt("Remaining Player Life")+ 1);
 		}
 	}
 }
