@@ -14,7 +14,7 @@ public class PlayerLifeController : MonoBehaviour {
 
 
 	// 1000 is one second.
-	public long timeToGiveLife = 1000 * 60;
+	public long timeToGiveLife = 1000 * 60 * 15;
 
 	AndroidJavaClass systemClock;
 
