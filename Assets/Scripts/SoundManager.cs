@@ -19,6 +19,9 @@ public class SoundManager : MonoBehaviour {
 
 	public AudioSource audio;
 
+	//Eating fly animation:
+	public Animator animator;
+
 
 //	public FlyBehavior m_flyBehavior;
 	public SlothBehavior m_slothBehavior;
@@ -40,6 +43,8 @@ public class SoundManager : MonoBehaviour {
 			if (FlyBehavior.playerTouchedFly) {
 				audio.PlayOneShot (flySound, 0.7f);
 				FlyBehavior.playerTouchedFly = false;
+				animator.SetTrigger("IsEating");
+				animator.SetBool ("IsMoving", true);
 			}
 
 			if (m_slothBehavior != null && m_slothBehavior.slothyDied) {
@@ -90,6 +95,7 @@ public class SoundManager : MonoBehaviour {
 			if (m_slothBehavior != null && m_slothBehavior.slothyTouchFruit) {
 				audio.PlayOneShot (FinishStageSound, 0.7f);
 				m_slothBehavior.slothyTouchFruit = false;
+				animator.SetTrigger("HittingTheGround");
 			}
 		}
 	}

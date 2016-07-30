@@ -41,7 +41,9 @@ public class NextLifeTime : MonoBehaviour {
 		}
 
 		if (GetRemainingLife() >= m_playerLifeController.maxPlayerLife) {
-			timeText.text = "infinity";
+			PlayerPrefs.SetInt("Remaining Player Life", m_playerLifeController.maxPlayerLife); // Change added
+			//timeText.text = "infinity";
+			timeText.text = "5";
 			needToShowTime = false;
 
 		} 
@@ -56,7 +58,9 @@ public class NextLifeTime : MonoBehaviour {
 			life.text = "" + GetRemainingLife();
 
 			if (GetRemainingLife() >= m_playerLifeController.maxPlayerLife) {
-				timeText.text = "infinity";
+				PlayerPrefs.SetInt("Remaining Player Life", m_playerLifeController.maxPlayerLife); // Change added
+				//timeText.text = "infinity";
+				timeText.text = "5";
 				PlayerPrefs.SetString("Last Time User Lost Life", null);
 				needToShowTime = false;
 				return;
@@ -88,7 +92,9 @@ public class NextLifeTime : MonoBehaviour {
 
 
 		} else if (GetRemainingLife() >= m_playerLifeController.maxPlayerLife) {
-			timeText.text = "infinity";
+			PlayerPrefs.SetInt("Remaining Player Life", m_playerLifeController.maxPlayerLife); // Change added
+			//timeText.text = "infinity";
+			timeText.text = "5";
 			PlayerPrefs.SetString("Last Time User Lost Life", null);
 			needToShowTime = false;
 			return;

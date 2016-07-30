@@ -66,6 +66,8 @@ public class SlothBehavior : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		//Destroy (GetComponent<PolygonCollider2D>());
+		//gameObject.AddComponent<PolygonCollider2D> ();
 		if (deathScreen.activeSelf && !isDeadSoundPlayed) {
 			m_PlayerLifeController.PlayerDied();
 			isDeadSoundPlayed = true;
