@@ -33,6 +33,10 @@ public class SlothBehavior : MonoBehaviour {
 	public Animator animator;
 
 
+	//Waking up animation:
+	public Animator animatorforslothanimation;
+
+
 	//sound - dead
 	public AudioClip DieSound;
 	public AudioSource audio;
@@ -75,6 +79,8 @@ public class SlothBehavior : MonoBehaviour {
 		}
 		// If user touched the sloth - drop the sloth from the collider it's on 
 		if (m_touchController.touchedPlayer && collisionObject != null) {
+			animatorforslothanimation.SetBool ("IsMoving", true);
+			animatorforslothanimation.SetTrigger("Sliding");
 			print ("Collider is " + collisionObject.tag);
 			collisionObject.isTrigger = true;
 			m_touchController.touchedPlayer = false;
@@ -83,18 +89,21 @@ public class SlothBehavior : MonoBehaviour {
 			
 		// Sloth landed on moving branch and starts moving with it 
 		if (collisionObject != null && collisionObject.tag == "MovingBranch") {
+			animatorforslothanimation.SetTrigger("HittingTheGround");
 			touchedMovingBranch = true;
 			sloth.transform.parent = movingBranch.transform;
 		}
 
 		// make the sloth stop moving with the moving branch
 		if (collisionObject != null && collisionObject.tag == "Branch" && touchedMovingBranch) {
+			animatorforslothanimation.SetTrigger("HittingTheGround");
 			touchedMovingBranch = false;
 			sloth.transform.parent = null;
 		}
 
 		// Sloth landed on huge branch
 		if (collisionObject != null && collisionObject.tag == "HugeMovingBranch") {
+			animatorforslothanimation.SetTrigger("HittingTheGround");
 			sloth.transform.parent = hugeMovingBranch.transform;
 		}
 
@@ -107,15 +116,19 @@ public class SlothBehavior : MonoBehaviour {
 		}
 
 		if (collisionObject != null && collisionObject.tag == "JumpingBranch" && !slothyJumping  && !audio.isPlaying) {
+			animatorforslothanimation.SetTrigger("HittingTheGround");
 			slothyJumping = true;
 		}
 		if (collisionObject != null && collisionObject.tag == "sliperyBranch") {
+			animatorforslothanimation.SetTrigger("HittingTheGround");
 			slothyOnSlipery = true;
 		}
 		if (collisionObject != null && collisionObject.tag == "BranchWithThorns") {
+			animatorforslothanimation.SetTrigger("HittingTheGround");
 			slothyOnThorns = true;
 		}
 		if (collisionObject != null && collisionObject.tag == "Gaizer") {
+			animatorforslothanimation.SetTrigger("HittingTheGround");
 			slothyOnGaizer = true;
 		}
 

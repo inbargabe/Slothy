@@ -16,6 +16,10 @@ public class TouchController : MonoBehaviour {
 	public SlothBehavior m_slothBehavior;
 	public bool stopMovingWithBranch;
 
+
+	//Waking up animation:
+	public Animator animatorforslothanimation;
+
 	void Start() {
 		touchedPlayer = false;
 		touchedBranchSound = false;
@@ -51,6 +55,7 @@ public class TouchController : MonoBehaviour {
 						touchedPlayer = true;
 						stopMovingWithBranch = true;
 					} else if (obj.name == "sloth") {
+						animatorforslothanimation.SetBool ("IsMoving", true);
 						touchedPlayer = true;
 					}
 				}
