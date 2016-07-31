@@ -4,6 +4,7 @@ using UnityEngine.Advertisements;
 public class AdsManager : MonoBehaviour
 {
 	public GameObject NoMoreLivesScreen;
+	public GameObject deathScreen;
 	int counter;
 
 
@@ -12,9 +13,10 @@ public class AdsManager : MonoBehaviour
 	}
 
 	void Update(){
-		if (counter == 2) {
+		if (counter == 1) {
 			counter = 0;
 			NoMoreLivesScreen.SetActive(false);
+			deathScreen.SetActive (true);
 		}
 	}
 	public void ShowAd()
