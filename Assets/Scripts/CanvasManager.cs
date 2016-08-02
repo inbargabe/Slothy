@@ -66,12 +66,14 @@ public class CanvasManager : MonoBehaviour {
 	public void SetLevels() {
 		print(PlayerPrefs.GetInt("levelNumber"));
 		for(int i = 0; i < numOfLevels ; i++) {
+			
 			if (PlayerPrefs.GetInt("levelNumber") >= i) {
 				levelMenu.transform.GetChild(i + 1).GetComponent<Button>().interactable = true;
 			} else {
 				levelMenu.transform.GetChild(i + 1).GetComponent<Button>().interactable = false;
 			}
 		}
+
 	}
 
 	public void onClickBeginButton() {
