@@ -34,9 +34,6 @@ public class ButtonsControl : MonoBehaviour {
 
 	public void onClickNextLevel() {
 		loadingImage.SetActive(true);
-
-		//Debug inbi//
-		Time.timeScale = 1;
 		SceneManager.LoadSceneAsync (SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
 		audio.PlayOneShot (clickSound, 0.7f);
 	}

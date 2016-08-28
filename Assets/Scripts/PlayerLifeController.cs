@@ -10,7 +10,7 @@ public class PlayerLifeController : MonoBehaviour {
 
 	// TODO: Attach this script to main menu.
 
-	public int maxPlayerLife = 10;
+	public int maxPlayerLife = 1000000;
 
 
 	// 1000 is one second.
